@@ -1,0 +1,18 @@
+{
+  "name": "matching-app",
+  "version": "1.0.0",
+  "description": "this is my matching app project for tech",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "author": "zahra ahmadi",
+  "license": "MIT",
+  "dependencies": {
+    "camelcase": "^6.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
