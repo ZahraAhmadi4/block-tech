@@ -7,9 +7,10 @@ Bookmatch is een matching app voor boekennerds die hun favoriete boek kunnen inv
 
 
 ## Installatie
-Je kunt mijn project installeren door mijn repo lokaal te klonen. Als eerst moet je NPM en Node geinstalleerd hebben. Je kunt checken of deze zijn geinstaleerd door de volgende commando's uit te voeren:
+Je kunt mijn project installeren door mijn repo lokaal te klonen. Als eerst moet je NPM en Node geinstalleerd hebben. Je kunt checken of deze zijn geinstalleerd door de volgende commando's uit te voeren:
 
 node -v
+
 npm -v
 
 
