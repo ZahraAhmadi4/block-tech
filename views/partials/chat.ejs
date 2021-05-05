@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <title><%- title %></title>
 </head>
 <body>
+
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>Bookmatch.</h1>
+            <a href="index.html" class="btn">Stop chat</a>
+        </header>
+    </div>
+
     <div class="chat-messages">
 		<div class="message">
 			<p class="meta">Samantha <span>12:12pm</span></p>
@@ -18,6 +26,18 @@
 		    <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,repudiandae.</p>
 		</div>
     </div>
+
+    <div class="chat-form-container">
+        <form id="chat-form">
+          <input
+            id="msg"
+            type="text"
+            placeholder="Enter Message"
+            required
+            autocomplete="off"/>
+          <button class="btn">Send message</button>
+        </form>
+      </div>
 
 </body>
 </html>

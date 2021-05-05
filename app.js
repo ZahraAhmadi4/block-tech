@@ -1,43 +1,44 @@
 // Loading the things we need
 const express = require('express');
-const expressLayouts = require('express-ejs-layouts');
+
 const app = express();
 const port = 3000;
-
-
+const path = require('path');
 
 // Setup static folder
 app.use(express.static('static'));
-app.use('/css', express.static(__dirname + 'static/css'));
+app.use(express.static(path.join(__dirname, 'views')));
 
-
-
-// Setting the templating engine to ejs
-app.use(expressLayouts)
+// templating engine
 app.set('view engine', 'ejs');
-app.get('/', (req, res) => {
-  res.render('index');
-})
-
-
 
 // Navigation
 app.get('/', (req, res) => {
-  res.render('index', {title: 'Bookmatch.'})
+  res.render('index');
 });
 
-app.get('layouts', (req, res) => {
-  res.render('width')
+app.get('/about', (req, res) => {
+  const users = [
+    { name: 'John', book: 'The Maze Runner' },
+    { name: 'Marilynn', book: 'The Maze Runner' },
+    { name: 'Samantha', book: 'Normal People' },
+    { name: 'Daniel', book: 'Normal People' },
+  ];
+
+  res.render('layouts/about', {
+    users,
+  });
 });
 
-// 404 page
-app.use((req, res, next) => {
-  res.render('404', { title: 'Bookmatch 404', message: '404 | This page was not found!'})
-})
+app.use((req, res) => {
+  res.render('404', {
+    title: 'Bookmatch 404',
+    message: '404 | This page was not found!',
+  });
+});
 
-//Starting the server
+// Starting the server
 app.listen(port, () => {
+  // eslint-disable-next-line no-console
   console.log(`Example app listening at http://localhost:${port}`);
-})
-
-
+});
