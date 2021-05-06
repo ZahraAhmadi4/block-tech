@@ -1,37 +1,38 @@
 // Loading the things we need
 const express = require('express');
-
+const path = require('path');
+const bodyParser = require('body-parser');
+const multer = require('multer');
 const app = express();
 const port = 3000;
-const path = require('path');
 
-// Setup static folder
-app.use(express.static('static'));
-app.use(express.static(path.join(__dirname, 'views')));
+// Parse application
+app.use(bodyParser.urlencoded({ extended: false }));
 
-// templating engine
+// Parse application/json
+app.use(bodyParser.json());
+
+// Calling the templating engine
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
+app.set('views', path.join(`${__dirname}/views`));
 
-// Navigation
+// Getting the pages
 app.get('/', (req, res) => {
   res.render('index');
 });
 
 app.get('/about', (req, res) => {
-  const users = [
-    { name: 'John', book: 'The Maze Runner' },
-    { name: 'Marilynn', book: 'The Maze Runner' },
-    { name: 'Samantha', book: 'Normal People' },
-    { name: 'Daniel', book: 'Normal People' },
-  ];
-
-  res.render('layouts/about', {
-    users,
-  });
+  res.render('pages/about');
 });
 
+app.get('/like', (req, res) => {
+  res.render('pages/like');
+});
+
+// 404 page
 app.use((req, res) => {
-  res.render('404', {
+  res.render('pages/404', {
     title: 'Bookmatch 404',
     message: '404 | This page was not found!',
   });

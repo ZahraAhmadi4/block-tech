@@ -1,12 +1,12 @@
 # Matching app - BookMatch
 
-Voor het individuele gedeelte van Project Tech heb ik gewerkt aan een chatfunctie van mijn matching app genaamd Bookmatch.
+Voor het individuele gedeelte van Project Tech heb ik gewerkt aan een likefunctie van mijn matching app genaamd Bookmatch.
 
 > Your favourite book can bring you amazing people!
 
 ## Wat is Bookmatch?
 
-Bookmatch is een matching app voor boekennerds die hun favoriete boek kunnen invoeren en op basis daarvan worden gebruikers met elkaar in een chatroom gezet. Het is een soort van Online Meetup, maar dan gebaseerd op boeken en het voeren van diepgaande en betekenisvolle gesprekken.
+Bookmatch is een matching app voor boekennerds die hun favoriete boek kunnen invoeren en op basis daarvan kunnen gebruikers elkaar liken/disliken.
 
 ## Documentatie
 
@@ -26,13 +26,15 @@ git clone https://github.com/ZahraAhmadi4/matchingapp-zahra
 
 ## De applicatie starten
 
-Door 'npm run dev' in te voeren kun je de applicatie starten. De applicatie kan bekeken worden op localhost:3000.
+Door `npm run dev` in te voeren kun je de applicatie starten. De applicatie kan bekeken worden op localhost:3000.
 
 ## Gebruikte technologieen
 
 - Node.js
 - Express
 - EJS
+- BodyParser
+- MongoDB
 
 ## License
 

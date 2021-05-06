@@ -1,0 +1,126 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: lightgray;
+}
+
+section.intro {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+  margin: 2em;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+p.info {
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 4em;
+  color: grey;
+}
+
+form {
+  background-color: lightcoral;
+  padding: 2em;
+  width: 40%;
+  margin: 0 auto;
+  border-radius: 1em;
+}
+
+form div label {
+  color: black;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+form div input {
+  color: black;
+  margin: 1em 0em 2em 0em;
+  padding: 1em;
+  border-radius: 1em;
+  border-style: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+form div button {
+  padding: 1em;
+  border-radius: 1em;
+  border-style: none;
+  color: white;
+  background-color: black;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  margin-top: 4em;
+}
+
+form div a {
+  text-decoration: none;
+}
+
+/* About page */
+
+section.about {
+  background-color: lightcoral;
+  padding: 2em;
+  margin: 4em;
+  border-radius: 2em;
+}
+
+h1.about {
+  font-size: 22px;
+}
+
+p.about {
+  text-align: center;
+  font-size: 16px;
+  margin: 0em 10em 10em 10em;
+}
+
+/* 404 page */
+
+div.notfound {
+  background-color: rgb(224, 91, 91);
+  margin: 0 auto;
+  padding: 1em;
+  width: 40%;
+  border-radius: 1em;
+  margin-bottom: 10em;
+}
+
+div.notfound h1 {
+  font-size: 18px;
+  color: white;
+}
+
+/* footer */
+footer p {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  padding: 2em;
+  margin-top: 3em;
+}
+
+form {
+  margin: 0 auto;
+}

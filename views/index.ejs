@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title><%- title %></title>
+    <%- include('partials/head.ejs'); %>
 </head>
 <body>
-    
-    <h1>Bookmatch.</h1>
-    <p class="info">Insert your favourite book and see yourself getting matched with 
-        amazing like-minded people!</p>
-    <form action="chat.html">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="user_name" />
-        </div>
-        <div>
-            <label for="mail">Title Favourite Book:</label>
-            <input type="text" id="book" name="user_book" />
-        </div>
-     
-        <div class="button">
-            <button type="submit">Start chatroom</button>
-        </div>
-    
-    </form>
-    <footer><%- include('layouts/footer.ejs') %></footer>
+
+    <header>
+        <%- include('partials/header.ejs'); %>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Welcome to Bookmatch. </h2>
+            <h2>Liked Booknerds</h2>
+        </section>
+
+        <form method="POST" action="/liked">
+            <section>
+                <img src="../../static/images/zara.jpg" alt="This is a photo
+                of the first user in the list.">
+                <h4>Zahra Ahmadi</h4>
+                <p>Favourite book: The Maze Runner by James Dashner</p>
+                
+
+                <div class="check">
+                    <label class="check-container">
+                        <input name="people" type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </section>
+        </form>
+
+        <form method="POST" action="/liked">
+            <section>
+                <img src="../../static/images/andre.jpg" alt="This is a photo
+                of the second user in the list.">
+                <h4>Andre Nijman</h4>
+                <p>Favourite book: Origin by Dan Brown</p>
+            
+
+                <div class="check">
+                    <label class="check-container">
+                        <input name="people" type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+            </section>
+            <button type="submit">Like this booknerd</button>
+        </form>
+
+    </main>
+    <footer>
+        <%- include('partials/footer.ejs'); %>
+    </footer>
+    <script src="../../static/js/script.js"></script>
 
 </body>
 </html>
