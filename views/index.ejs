@@ -9,53 +9,69 @@
         <%- include('partials/header.ejs'); %>
     </header>
 
-    <main>
-        <section class="intro">
-            <h2>Welcome to Bookmatch. </h2>
-            <h2>Liked Booknerds</h2>
-        </section>
+    <main>   
 
-        <form method="POST" action="/liked">
-            <section>
-                <img src="../../static/images/zara.jpg" alt="This is a photo
-                of the first user in the list.">
-                <h4>Zahra Ahmadi</h4>
-                <p>Favourite book: The Maze Runner by James Dashner</p>
+
+        <form method='POST' action="/liked">
+            <section class="user">
+                    <img src="images/zara.jpg" alt="This is a photo
+                    of the first user in the list.">
+                    <h4>Zahra Ahmadi</h4>
+                    <p>Favourite book: The Maze Runner by James Dashner</p>
+                    
+
+                    <div class="check">
+                        <label class="check-container">
+                            <input name="people" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+            </section> 
+            
+            <section class="user">
+     
+                    <img src="images/andre.jpg" alt="This is a photo
+                    of the second user in the list.">
+                    <h4>Andre Nijman</h4>
+                    <p>Favourite book: Origin by Dan Brown</p>
                 
 
-                <div class="check">
-                    <label class="check-container">
-                        <input name="people" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-            </section>
-        </form>
+                    <div class="check">
+                        <label class="check-container">
+                            <input name="people" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
 
-        <form method="POST" action="/liked">
-            <section>
-                <img src="../../static/images/andre.jpg" alt="This is a photo
-                of the second user in the list.">
-                <h4>Andre Nijman</h4>
-                <p>Favourite book: Origin by Dan Brown</p>
-            
+            </section> 
 
-                <div class="check">
-                    <label class="check-container">
-                        <input name="people" type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
+            <section class="user">
+    
+                    <img src="images/maya.jpg" alt="This is a photo
+                    of the third user in the list.">
+                    <h4>Maya Orlando</h4>
+                    <p>Favourite book: The Hunger Games by Suzanne Collins</p>
+                
 
-            </section>
-            <button type="submit">Like this booknerd</button>
+                    <div class="check">
+                        <label class="check-container">
+                            <input name="people" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+            </section> 
+
+            <button type="submit" id="submitbutton">Like this booknerd</button>
         </form>
 
     </main>
+
     <footer>
         <%- include('partials/footer.ejs'); %>
     </footer>
-    <script src="../../static/js/script.js"></script>
+    <script src="../../public/js/script.js"></script>
+
 
 </body>
 </html>

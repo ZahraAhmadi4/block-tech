@@ -1,35 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../partials/head'); %>
+    <%- include('../partials/head.ejs'); %>
 </head>
 <body>
-    <header>
-        <%- include('../partials/header'); %>
-    </header>
-
+    <header><%- include('../partials/header2.ejs'); %></header>
     <main>
         <section>
-            <h2>Welcome to Bookmatch.</h2>
-            <h3>Booknerds you liked</h3>
-        </section>
-
-        <section>
-            <ul>
-                <% people.forEach(function(persoon { %>
-                <li>
-                    <h1></h1>
-                    <button>Dislike</button>
-                </li> %> })); %>
-            </ul>
+         
         </section>
 
     </main>
-
-    <footer>
-        <%- include('../partials/footer'); %>
-    </footer>
-<body>
-    
+    <footer><%- include('../partials/footer.ejs'); %></footer>
+    <script src="../../public/js/script.js"></script>
 </body>
-</html>
