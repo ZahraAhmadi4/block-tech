@@ -1,36 +1,49 @@
-// Loading the things we need
+require('dotenv').config();
 const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-const multer = require('multer');
+
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+const mongoose = require('mongoose');
+const path = require('path');
 
-// Parse application
-app.use(bodyParser.urlencoded({ extended: false }));
+// Database connection
+mongoose.connect('mongodb://localhost/test', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-// Parse application/json
-app.use(bodyParser.json());
+const db = mongoose.connection;
+// eslint-disable-next-line no-console
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {});
 
-// Calling the templating engine
+/*
+// bookmatch is de naam van mijn MongoDB database en bookmatchpeople is de naam van mijn collection
+const db = connection.db('Bookmatch');
+const personenCollection = db.collection('bookmatchpeople');*/
+
+// Hier wordt mijn templating engine en bodyparser aangeroepen.
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(`${__dirname}/views`));
+app.use(express.urlencoded({ extended: true }));
 
-// Getting the pages
 app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/about', (req, res) => {
-  res.render('pages/about');
-});
-
-app.get('/like', (req, res) => {
+// Naar de like pagina gaan als je gebruikers geliket hebt.
+app.use((req, res) => {
   res.render('pages/like');
 });
 
-// 404 page
+app.post('/like', (req, res) => {
+  // eslint-disable-next-line no-console
+  console.log(req.body);
+  res.send('data saved succesfully');
+});
+
+// 404
 app.use((req, res) => {
   res.render('pages/404', {
     title: 'Bookmatch 404',

@@ -1,56 +1,102 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Raleway', sans-serif;
-  background-color: lightgray;
+  margin: 0 auto;
+  background-color: #2b2b2b;
 }
 
-section.intro {
+/* Homepage */
+
+nav {
+  width: 100%;
+  background-color: #3c3c3c;
+  position: sticky;
+  height: 12vh;
+}
+
+nav ul {
   display: flex;
-  justify-content: space-around;
-  text-align: center;
-  font-size: 12px;
-  font-weight: lighter;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  padding-top: 1em;
+  list-style: none;
+  padding-left: 4em;
+  padding-right: 4em;
+}
+
+li.likebtn {
+  padding-top: 3.5em;
+}
+
+a.likebtn {
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #4faef2;
+}
+
+a.likebtn2 {
+  color: #4faef2;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 h1 {
-  color: black;
-  text-align: center;
-  margin: 2em;
+  color: white;
   font-weight: 600;
   font-size: 30px;
 }
 
-p.info {
-  text-align: center;
-  font-size: 14px;
-  font-style: italic;
-  font-weight: 600;
-  margin-bottom: 4em;
-  color: grey;
+li.home {
+  padding-top: 2.5em;
 }
 
-form {
-  background-color: lightcoral;
-  padding: 2em;
-  width: 40%;
+a.homelink {
+  color: white;
+  font-weight: 600;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+a.homelink:hover {
+  color: #4faef2;
+}
+
+img {
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+section.user {
+  background-color: #ed6464;
+  padding: 1em 1em 3em 1em;
+  width: 30%;
   margin: 0 auto;
   border-radius: 1em;
+  margin-top: 4em;
+  margin-bottom: 2em;
+  color: white;
 }
 
 form div label {
-  color: black;
   text-transform: uppercase;
   font-size: 16px;
 }
 
 form div input {
-  color: black;
-  margin: 1em 0em 2em 0em;
   padding: 1em;
   border-radius: 1em;
   border-style: none;
@@ -58,31 +104,91 @@ form div input {
   font-size: 14px;
 }
 
-form div button {
+form button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   padding: 1em;
   border-radius: 1em;
   border-style: none;
   color: white;
-  background-color: black;
+  background-color: #626262;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
-  width: 100%;
+  width: 25%;
   text-align: center;
-  margin-top: 4em;
+}
+
+form button:hover {
+  background-color: #4faef2;
 }
 
 form div a {
   text-decoration: none;
 }
 
+.check-container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.check-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #626262;
+  border-radius: 0.5em;
+}
+
+.check-container:hover input ~ .checkmark {
+  background-color: #4faef2;
+}
+
+.check-container input:checked ~ .checkmark {
+  background-color: #4faef2;
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.check-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
 /* About page */
 
 section.about {
-  background-color: lightcoral;
+  background-color: #ed6464;
   padding: 2em;
   margin: 4em;
   border-radius: 2em;
+}
+
+.check-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 h1.about {
@@ -98,12 +204,13 @@ p.about {
 /* 404 page */
 
 div.notfound {
-  background-color: rgb(224, 91, 91);
+  background-color: #ed6464;
   margin: 0 auto;
   padding: 1em;
-  width: 40%;
+  width: 60%;
   border-radius: 1em;
   margin-bottom: 10em;
+  margin-top: 10em;
 }
 
 div.notfound h1 {
@@ -113,14 +220,13 @@ div.notfound h1 {
 
 /* footer */
 footer p {
-  background-color: black;
+  background-color: #3c3c3c;
   color: white;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   padding: 2em;
-  margin-top: 3em;
-}
-
-form {
-  margin: 0 auto;
+  position: sticky;
+  bottom: 0;
+  margin-top: 8em;
+  text-transform: uppercase;
 }
