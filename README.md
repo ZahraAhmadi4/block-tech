@@ -10,7 +10,7 @@ Bookmatch is een matching app voor boekennerds die hun favoriete boek kunnen inv
 
 ## Mijn feature
 
-<img src="images/logic.jpg" width="600px">
+<img src="public/images/logic.jpg" width="600px">
 
 ## Documentatie
 
