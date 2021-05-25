@@ -8,10 +8,6 @@ Voor het individuele gedeelte van Project Tech heb ik gewerkt aan een inlog-, ui
 
 Bookmatch is een matching app voor boekennerds die hun favoriete boek kunnen invoeren en op basis daarvan kunnen gebruikers elkaar liken/disliken.
 
-## Mijn feature
-
-<img src="public/images/logic.jpg" width="600px">
-
 ## Documentatie
 
 De documentatie van mijn project kun je vinden op mijn [wiki](https://github.com/ZahraAhmadi4/matchingapp-zahra/wiki).
