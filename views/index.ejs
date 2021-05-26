@@ -10,67 +10,26 @@
     </header>
 
     <main>   
-
-
-        <form method='POST' action="/liked">
-            <section class="user">
-                    <img src="images/zara.jpg" alt="This is a photo
-                    of the first user in the list.">
-                    <h4>Zahra Ahmadi</h4>
-                    <p>Favourite book: The Maze Runner by James Dashner</p>
-                    
-
-                    <div class="check">
-                        <label class="check-container">
-                            <input name="people" type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-            </section> 
-            
-            <section class="user">
-     
-                    <img src="images/andre.jpg" alt="This is a photo
-                    of the second user in the list.">
-                    <h4>Andre Nijman</h4>
-                    <p>Favourite book: Origin by Dan Brown</p>
-                
-
-                    <div class="check">
-                        <label class="check-container">
-                            <input name="people" type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-
-            </section> 
-
-            <section class="user">
+        <p class="welcome">Welcome to Bookmatch.<br>This platform helps you to find like-minded people 
+            who share the same interests as you.
+        </p>
+        <form action="/userprofile" method="GET">
+            <label for="username">User Name</label>
+            <input type="text" placeholder="Your name" required id="xyz" name="username">
+            <label for="password">Password</label>
+            <input type="password" placeholder="Enter your password" id="password" required name="password">
+            <button>Login</button> 
     
-                    <img src="images/maya.jpg" alt="This is a photo
-                    of the third user in the list.">
-                    <h4>Maya Orlando</h4>
-                    <p>Favourite book: The Hunger Games by Suzanne Collins</p>
-                
+            <p>Are you here for the first time? <a href="/register" class="signup">Make an account</a>.</p>
 
-                    <div class="check">
-                        <label class="check-container">
-                            <input name="people" type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-
-            </section> 
-
-            <button type="submit" id="submitbutton">Like this booknerd</button>
         </form>
+
 
     </main>
 
     <footer>
         <%- include('partials/footer.ejs'); %>
     </footer>
-    <script src="../../public/js/script.js"></script>
 
 
 </body>

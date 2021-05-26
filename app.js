@@ -2,45 +2,119 @@ require('dotenv').config();
 const express = require('express');
 
 const app = express();
-const port = process.env.PORT || 3000;
-const mongoose = require('mongoose');
+const port = process.env.PORT || 4000;
 const path = require('path');
+const passport = require('passport'); // is needed for our feature (login, logout).
+const LocalStrategy = require('passport-local'); // is needed to authenticate using username and password.
+const session = require('express-session'); // every user will be assigned a unique session.
+const mongoose = require('mongoose');
 
-// Database connection
-mongoose.connect('mongodb://localhost/test', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const db = mongoose.connection;
-// eslint-disable-next-line no-console
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {});
-
-/*
-// bookmatch is de naam van mijn MongoDB database en bookmatchpeople is de naam van mijn collection
-const db = connection.db('Bookmatch');
-const personenCollection = db.collection('bookmatchpeople');*/
+const User = require('./models/user');
 
 // Hier wordt mijn templating engine en bodyparser aangeroepen.
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(`${__dirname}/views`));
+
+// BodyParser
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Connecten met database
+
+mongoose.connect('mongodb://localhost:27017/bookmatch', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+app.use(
+  session({
+    secret: 'Word', // decode or encode session
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+passport.serializeUser(User.serializeUser()); // session encoding
+passport.deserializeUser(User.deserializeUser()); // session decoding
+passport.use(new LocalStrategy(User.authenticate()));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Current User
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+// Middleware
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('index');
+}
 
 app.get('/', (req, res) => {
   res.render('index');
 });
 
-// Naar de like pagina gaan als je gebruikers geliket hebt.
-app.use((req, res) => {
-  res.render('pages/like');
+app.get('/userprofile', (req, res) => {
+  res.render('pages/userprofile');
 });
 
-app.post('/like', (req, res) => {
-  // eslint-disable-next-line no-console
-  console.log(req.body);
-  res.send('data saved succesfully');
+app.post(
+  '/',
+  passport.authenticate('local', {
+    successRedirect: '/userprofile',
+    failureRedirect: '/',
+  }),
+  (req, res) => {}
+);
+
+app.get('/register', (req, res) => {
+  res.render('pages/register');
+  console.log('haaa');
+});
+
+app.post('/register', (req, res) => {
+  User.register(
+    new User({
+      username: req.body.username,
+      book: req.body.book,
+    }),
+    req.body.password,
+    (err, user) => {
+      if (err) {
+        console.log(err);
+        res.render('register');
+      }
+      passport.authenticate('local')(req, res, () => {
+        res.redirect('userprofile');
+      });
+    }
+  );
+});
+
+const user = {
+  name: 'Zara Zara',
+  book: 'TMR',
+};
+
+app.use((req, res, next) => {
+  res.renderWithData = function (view, model, data) {
+    res.render(view, model, (err, viewString) => {
+      data.view = viewString;
+      res.json(data);
+    });
+  };
+  next();
+});
+
+app.get('/userprofile', (req, res) => {
+  req.logout();
+  res.redirect('/');
 });
 
 // 404

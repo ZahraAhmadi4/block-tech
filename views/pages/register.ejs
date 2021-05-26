@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs'); %>
+</head>
+<body>
+
+    <header>
+        <%- include('../partials/header2.ejs'); %>
+    </header>
+
+    <main>
+      <p class="welcome">Welcome to Bookmatch.<br>This platform helps you to find like-minded people 
+        who share the same interests as you.
+      <form action="/userprofile" method="GET">
+        <h2>Register</h2>
+        <p class="intro">Please fill in this form to start your bookish journey!</p>
+    
+        <label for="username">Name</label>
+        <input type="text" placeholder="Enter your name" name="username" id="username" required>
+    
+        <label for="psw">Password</label>
+        <input type="password" placeholder="Enter your password" name="psw" id="psw" required>
+    
+        <label for="book">Your favourite book</label>
+        <input type="text" placeholder="Write here the title of your favourite book" name="book" id="book" required>
+  
+        <button type="submit">Register</button>
+  
+        <p>Do you already have an account? <a href="/" class="signup">Sign in</a>.</p>
+  
+      </form>
+    </main>
+
+
+  <footer>
+    <%- include('../partials/footer.ejs'); %>
+</footer>
+
+
+</body>
+</html>
