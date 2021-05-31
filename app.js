@@ -9,6 +9,7 @@ const LocalStrategy = require('passport-local'); // is needed to authenticate us
 const session = require('express-session'); // every user will be assigned a unique session.
 const mongoose = require('mongoose');
 
+const { url } = require('inspector');
 const User = require('./models/user');
 
 // Hier wordt mijn templating engine en bodyparser aangeroepen.
@@ -22,9 +23,22 @@ app.use(express.urlencoded({ extended: true }));
 
 // Connecten met database
 
-mongoose.connect('mongodb://localhost:27017/bookmatch', {
+mongoose.connect('mongodb://localhost:27017/Bookmatch', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+});
+
+// Testen of ik gekoppeld ben met mongoose.
+console.log(mongoose.connection.readyState);
+
+const db = mongoose.connection;
+// eslint-disable-next-line no-unused-vars
+db.once('open', (_) => {
+  console.log('Database connected:', url);
+});
+
+db.on('error', (err) => {
+  console.error('connection error:', url);
 });
 
 app.use(
@@ -78,7 +92,7 @@ app.get('/register', (req, res) => {
   console.log('haaa');
 });
 
-app.post('/register', (req, res) => {
+app.post('/', (req, res) => {
   User.register(
     new User({
       username: req.body.username,
@@ -88,7 +102,7 @@ app.post('/register', (req, res) => {
     (err, user) => {
       if (err) {
         console.log(err);
-        res.render('register');
+        res.render('/register');
       }
       passport.authenticate('local')(req, res, () => {
         res.redirect('userprofile');
@@ -96,11 +110,6 @@ app.post('/register', (req, res) => {
     }
   );
 });
-
-const user = {
-  name: 'Zara Zara',
-  book: 'TMR',
-};
 
 app.use((req, res, next) => {
   res.renderWithData = function (view, model, data) {
@@ -110,11 +119,6 @@ app.use((req, res, next) => {
     });
   };
   next();
-});
-
-app.get('/userprofile', (req, res) => {
-  req.logout();
-  res.redirect('/');
 });
 
 // 404

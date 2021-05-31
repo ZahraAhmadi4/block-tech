@@ -9,6 +9,7 @@
   "author": "zahra ahmadi",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "camelcase": "^6.2.0",
     "dotenv": "^9.0.1",
     "ejs": "^3.1.6",
@@ -16,6 +17,7 @@
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.2",
     "express-validator": "^6.11.1",
+    "method-override": "^3.0.0",
     "mongodb": "^3.6.6",
     "mongoose": "^5.12.7",
     "passport": "^0.4.1",
